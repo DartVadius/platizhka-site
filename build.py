@@ -163,6 +163,11 @@ def render(template, lang, rel, available, meta, body, jsonld,
         "OG_TYPE": og_type,
         "OG_TITLE": html.escape(meta.get("og_title", meta["title"]), quote=True),
         "OG_LOCALE": OG_LOCALE.get(lang, lang),
+        # Absolute URL on purpose: the OG spec requires it and scrapers do not
+        # resolve relative paths. Per-language because the card carries a
+        # sentence — see tool/make_og_images.py.
+        "OG_IMAGE": "%s/assets/img/og-%s.png" % (SITE, lang),
+        "OG_IMAGE_ALT": html.escape(meta.get("og_title", meta["title"]), quote=True),
         "JSONLD": json.dumps(jsonld, ensure_ascii=False, separators=(",", ":")),
         "HOME": url_for(lang, ""),
         "BLOG": url_for(lang, "blog"),
@@ -409,9 +414,14 @@ def main():
             jsonld = {"@context": "https://schema.org", "@type": "Blog",
                       "name": index_meta["title"], "url": SITE + url_for(lang, rel),
                       "inLanguage": lang,
+                      # author is required for BlogPosting — it is present on the
+                      # articles themselves and was missing only here, which is
+                      # what Ahrefs flagged as a rich-results error on all three
+                      # section indexes.
                       "blogPost": [{"@type": "BlogPosting",
                                     "headline": m["title"],
                                     "datePublished": m["date"],
+                                    "author": {"@type": "Person", "name": CFG["author"]},
                                     "url": SITE + url_for(lang, section + "/" + sl)}
                                    for sl, m, _b in chunk]}
             page = render(template, lang, rel, available, index_meta, body, jsonld,

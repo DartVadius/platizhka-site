@@ -87,6 +87,60 @@ footer's privacy link resolves per language, and falls back to `privacy_url`
 (the app's own policy) for any language that has no `pages/privacy.html`, so the
 link can never 404.
 
+## Share images (Open Graph)
+
+`tool/make_og_images.py` renders `assets/img/og-<lang>.png` at 1200×630 through
+headless Chrome. Output is committed; re-run only when the wording, the palette
+or the screenshot changes. macOS-only (hardcoded Chrome path) — it is a
+build-time tool, deliberately not part of `build.py`.
+
+One image per language rather than one shared one: the card carries a sentence,
+and `og:title` is already per-language, so a Ukrainian reader sharing the
+Ukrainian page should not unfurl a card in English.
+
+PNG at ~425 KB is kept over a smaller JPEG on purpose: the background is a
+gradient, which is exactly what JPEG bands, and scrapers cache the file anyway.
+
+⚠ `og:image` must be an **absolute** URL — the spec requires it and scrapers do
+not resolve relative paths. `build.py` builds it from `site`.
+
+## Accessibility and validity — decisions that look like defects
+
+Findings from a 2026-08-23 pass through Ahrefs Site Audit, the W3C Nu checker,
+WAVE, the Rich Results Test and validator.schema.org. Recorded so the same
+"issues" are not re-litigated from a tool's summary screen.
+
+Fixed, and worth not regressing:
+
+- `--ink-faint` was `#6b7a94` — 4.34:1 on white, 4.05:1 on `--bg-tint`, under the
+  4.5 AA floor. Every use is 13–14px text, so the large-text exemption never
+  applied. Now `#5f6e88` (5.16 / 4.81).
+- Headings ran h1 → h3 with no h2, because the six feature cards are `<h3>`. The
+  `.cards__head` h2 above the grid exists for the document outline first.
+- `BlogPosting` entries in the section-index JSON-LD had no `author`, which is
+  required. It was present on the articles and missing only in the lists.
+- The Google Play badge had `srcset="… 646w"` with no `sizes` — invalid, and
+  pointless with one candidate identical to `src`.
+- Justified body text was removed. WAVE flags it: uneven word spacing forms
+  vertical "rivers" that are harder for dyslexic and low-vision readers, and the
+  usual mitigation is hyphenation, which is unavailable to us (no Ukrainian
+  dictionary — the browser produced "еле-ктроенергію").
+
+⚠ Reported by a tool, and correct as-is — do not "fix" these:
+
+- **`aggregateRating` missing** from `SoftwareApplication`. Deliberate. Google
+  requires the rating to be visible on the page and not self-serving; injecting
+  Play Store stars into markup without showing them is the pattern that earns a
+  manual action.
+- **"Missing alt text"** on three images. They are `alt=""` on decorative
+  illustrations, which is the correct practice — WAVE counts the same ones as a
+  feature. Ahrefs cannot tell decorative from forgotten.
+- **3XX and HTTP→HTTPS redirects.** GitHub Pages does apex↔www and http→https
+  itself and gives us no header control. Unfixable and harmless.
+- **"Pages to submit to IndexNow".** Ahrefs advertising its own integration;
+  `notify.py` already does this.
+- **Low security-header grades.** Pages cannot set HTTP headers at all.
+
 ## Visitor analytics
 
 `cf_beacon_token` in `site.json` — the Cloudflare Web Analytics site token, from

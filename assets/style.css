@@ -7,7 +7,11 @@
   --sapphire-lo: #3D6FE0;
   --ink:         #0d1526;
   --ink-soft:    #45536d;
-  --ink-faint:   #6b7a94;
+  /* 5f6e88, not the lighter 6b7a94 it used to be: that gave 4.34:1 on white
+     and 4.05:1 on --bg-tint, under the 4.5 AA floor, and every use of this
+     token is 13-14px text so the large-text exemption never applied. Now
+     5.16 and 4.81, still lighter than --ink-soft so the hierarchy holds. */
+  --ink-faint:   #5f6e88;
   --bg:          #ffffff;
   --bg-tint:     #f4f7fd;
   --line:        #e3e9f5;
@@ -454,39 +458,42 @@ html[data-theme="dark"] .split .hero__art::before { opacity: .8; }
 /* Give the alternating sections breathing room instead of hard edges. */
 .split { padding-block: clamp(1.5rem, 4vw, 2.5rem); }
 
-/* ── justified body text ─────────────────────────────────────────────── */
-/* Paragraphs and list items are justified; headings are not — a justified
-   heading stretches two words across a whole line and reads as broken. */
+/* ── body text ───────────────────────────────────────────────────────── */
+/* Ragged-right, not justified. Justification was tried and removed: WAVE flags
+   it as an accessibility problem because uneven word spacing forms vertical
+   "rivers" that are measurably harder for dyslexic and low-vision readers, and
+   the usual mitigation is unavailable to us — see the hyphenation note below.
+   So the gaps here were wider than justified text normally has. */
 .prose p,
 .prose li,
 .note p {
-  text-align: justify;
-  /* ⚠ Automatic hyphenation is off deliberately. The browser produced breaks
-     that do not exist in Ukrainian — "еле-ктроенергію" instead of "елек-" —
-     which reads as illiteracy on a Ukrainian-language page. There is evidently
-     no uk dictionary in play, only a generic fallback, and a wrong break costs
-     more than the whitespace it saves. */
+  /* ⚠ Automatic hyphenation stays off. The browser produced breaks that do not
+     exist in Ukrainian — "еле-ктроенергію" instead of "елек-" — which reads as
+     illiteracy on a Ukrainian-language page. There is evidently no uk
+     dictionary in play, only a generic fallback. `manual` is the CSS default;
+     it is spelled out here so nobody reintroduces `auto` as an improvement. */
   hyphens: manual;
   -webkit-hyphens: manual;
   text-wrap: pretty;
 }
-
-/* Narrow screens fit few words per line, so justification turns into visible
-   gaps. Below this width ragged-right simply reads better. */
-@media (max-width: 34rem) {
-  .prose p, .prose li, .note p { text-align: left; }
-}
-
-/* The hero lead stays ragged-right: it is display copy, and justifying a short
-   two-line paragraph under a headline looks like a mistake rather than a
-   choice. */
-.hero .lead { text-align: left; }
 
 /* Card icons were tried and dropped: a row of emoji renders differently on
    every OS, and a set of drawn marks read as decoration in a product that sells
    itself on not having decoration. The real screenshots carry the visuals. The
    icon set still lives in build.py as {{ICON_*}} if a card ever needs one. */
 .card h3:first-child { margin-top: 0; }
+
+/* The section heading above the card grid. It exists for the document outline
+   first: the six cards are <h3>, and without an <h2> over them the page jumped
+   h1 → h3, which both the W3C validator and WAVE flag — a screen reader gets a
+   torn table of contents. Styled as a quiet section label rather than a
+   headline, because the cards are the content and this only names them. */
+.cards__head {
+  font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+  letter-spacing: -.01em;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
 
 /* ── card illustrations ──────────────────────────────────────────────── */
 /* The generated art carries its own dark background — asking a model for
