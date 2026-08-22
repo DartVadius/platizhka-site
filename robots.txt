@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 
+# Answer engines are welcome — being cited is a goal, not a leak.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://platizhka.com.ua/sitemap.xml

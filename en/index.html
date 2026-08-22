@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Платіжка — розрахунок комунальних платежів за показниками лічильників</title>
-<meta name="description" content="Застосунок для Android, який рахує комунальні платежі за вашими показниками лічильників. Тарифи задаєте ви: ступені споживання, зони день/ніч, сезонні, фіксована плата. Працює без інтернету.">
-<link rel="canonical" href="https://platizhka.com.ua/">
+<title>Platizhka — utility bill calculator based on your meter readings</title>
+<meta name="description" content="Android app that calculates utility bills from your own meter readings. You define the tariffs: consumption blocks, day/night zones, seasonal rates, fixed fees. Works offline, no account.">
+<link rel="canonical" href="https://platizhka.com.ua/en/">
 <link rel="alternate" hreflang="uk" href="https://platizhka.com.ua/">
 <link rel="alternate" hreflang="ru" href="https://platizhka.com.ua/ru/">
 <link rel="alternate" hreflang="en" href="https://platizhka.com.ua/en/">
@@ -14,13 +14,13 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Платіжка">
-<meta property="og:url" content="https://platizhka.com.ua/">
-<meta property="og:title" content="Платіжка — комунальні платежі без паперу й таблиць">
-<meta property="og:description" content="Застосунок для Android, який рахує комунальні платежі за вашими показниками лічильників. Тарифи задаєте ви: ступені споживання, зони день/ніч, сезонні, фіксована плата. Працює без інтернету.">
-<meta property="og:locale" content="uk_UA">
+<meta property="og:url" content="https://platizhka.com.ua/en/">
+<meta property="og:title" content="Platizhka — utility bills without paper or spreadsheets">
+<meta property="og:description" content="Android app that calculates utility bills from your own meter readings. You define the tariffs: consumption blocks, day/night zones, seasonal rates, fixed fees. Works offline, no account.">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Платіжка — комунальні платежі без паперу й таблиць">
-<meta name="twitter:description" content="Застосунок для Android, який рахує комунальні платежі за вашими показниками лічильників. Тарифи задаєте ви: ступені споживання, зони день/ніч, сезонні, фіксована плата. Працює без інтернету.">
+<meta name="twitter:title" content="Platizhka — utility bills without paper or spreadsheets">
+<meta name="twitter:description" content="Android app that calculates utility bills from your own meter readings. You define the tariffs: consumption blocks, day/night zones, seasonal rates, fixed fees. Works offline, no account.">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/style.css">
 <script>
@@ -31,21 +31,21 @@ document.documentElement.classList.add('js');
 try { var t = localStorage.getItem('platizhka-theme');
       if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Платіжка","applicationCategory":"FinanceApplication","operatingSystem":"Android 7.0+","url":"https://platizhka.com.ua/","installUrl":"https://play.google.com/store/apps/details?id=com.komunalka.komunalka","inLanguage":["uk","ru","en"],"offers":{"@type":"Offer","price":"0","priceCurrency":"UAH"},"author":{"@type":"Person","name":"Vadym Khoruzhyi"}},{"@type":"WebSite","name":"Платіжка","url":"https://platizhka.com.ua/","inLanguage":"uk"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Платіжка","applicationCategory":"FinanceApplication","operatingSystem":"Android 7.0+","url":"https://platizhka.com.ua/en/","installUrl":"https://play.google.com/store/apps/details?id=com.komunalka.komunalka","inLanguage":["uk","ru","en"],"offers":{"@type":"Offer","price":"0","priceCurrency":"UAH"},"author":{"@type":"Person","name":"Vadym Khoruzhyi"}},{"@type":"WebSite","name":"Платіжка","url":"https://platizhka.com.ua/en/","inLanguage":"en"}]}</script>
 </head>
 <body>
 
 <header class="top">
   <div class="shell top__in">
-    <a class="brand" href="/">
+    <a class="brand" href="/en/">
       <span class="brand__mark" aria-hidden="true">₴</span>
       <span>Платіжка</span>
     </a>
-    <nav aria-label="Навігація">
-<a class="navlink" href="/">Застосунок</a><a class="navlink" href="/blog/">Блог</a>
-      <span class="langs"><a href="/" hreflang="uk" lang="uk" aria-current="true">uk</a><a href="/ru/" hreflang="ru" lang="ru">ru</a><a href="/en/" hreflang="en" lang="en">en</a></span>
-      <button class="themebtn" type="button" aria-label="Тема"
-              data-label-dark="Тема" data-label-light="Тема">
+    <nav aria-label="Navigation">
+<a class="navlink" href="/en/">App</a><a class="navlink" href="/en/blog/">Blog</a>
+      <span class="langs"><a href="/" hreflang="uk" lang="uk">uk</a><a href="/ru/" hreflang="ru" lang="ru">ru</a><a href="/en/" hreflang="en" lang="en" aria-current="true">en</a></span>
+      <button class="themebtn" type="button" aria-label="Theme"
+              data-label-dark="Theme" data-label-light="Theme">
         <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
              stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -59,17 +59,17 @@ try { var t = localStorage.getItem('platizhka-theme');
 <div class="mesh">
   <div class="shell hero--split">
     <div class="prose">
-      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Android · безкоштовно</span>
-      <h1>Комунальні платежі, <span class="grad">які рахує застосунок</span></h1>
-      <p class="lead">Ви вводите показники лічильників — Платіжка рахує суму за
-      <em>вашими</em> тарифами, зберігає історію за всі місяці й нагадує, коли час
-      знімати показники. Без інтернету, без реєстрації, без реклами.</p>
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Android · free</span>
+      <h1>Utility bills, <span class="grad">calculated for you</span></h1>
+      <p class="lead">You enter the meter readings — Platizhka computes the amount from
+      <em>your own</em> tariffs, keeps the history of every month and reminds you when
+      it is time to read the meters again. No internet, no account, no ads.</p>
       <div class="btnrow">
         <a class="gplay" href="https://play.google.com/store/apps/details?id=com.komunalka.komunalka">
-          <img src="/assets/img/gplay-uk.png" srcset="/assets/img/gplay-uk.png 646w"
-               width="646" height="250" alt="Завантажити з Google Play">
+          <img src="/assets/img/gplay-en.png" srcset="/assets/img/gplay-en.png 646w"
+               width="646" height="250" alt="Get it on Google Play">
         </a>
-        <a class="btn btn--ghost" href="/blog/">Як рахуються тарифи →</a>
+        <a class="btn btn--ghost" href="/en/blog/">How tariffs are calculated →</a>
       </div>
     </div>
     <div class="hero__art">
@@ -82,7 +82,7 @@ try { var t = localStorage.getItem('platizhka-theme');
                srcset="/assets/img/screen-home.png 310w, /assets/img/screen-home@2x.png 620w"
                sizes="(max-width: 56rem) 62vw, 17rem"
                width="310" height="620" fetchpriority="high" decoding="async"
-               alt="Головний екран Платіжки: нарахування за місяць по кожній послузі">
+               alt="Platizhka home screen: this month\u2019s charges per service">
         </picture>
       </div>
     </div>
@@ -101,9 +101,10 @@ try { var t = localStorage.getItem('platizhka-theme');
              sizes="(max-width: 56rem) 90vw, 19rem"
              width="288" height="234" loading="lazy" decoding="async" alt="">
       </picture>
-      <h3>Ваші тарифи, а не чужі</h3>
-      <p>Ступені споживання, зони день/ніч, сезонні ставки, фіксована плата
-      й комбінації. Нічого не «вбито» заздалегідь — ви вводите те, що у вашій платіжці.</p>
+      <h3>Your tariffs, not someone else's</h3>
+      <p>Consumption blocks, day/night zones, seasonal rates, fixed fees and
+      combinations. Nothing is pre-filled from a national price list — you enter what is
+      printed on your bill.</p>
     </div>
     <div class="card reveal">
       <picture>
@@ -115,9 +116,9 @@ try { var t = localStorage.getItem('platizhka-theme');
              sizes="(max-width: 56rem) 90vw, 19rem"
              width="288" height="234" loading="lazy" decoding="async" alt="">
       </picture>
-      <h3>Історія, яка не переписується</h3>
-      <p>Кожен збережений місяць зберігає власний розрахунок. Зміните тариф —
-      минулі нарахування залишаться такими, якими були.</p>
+      <h3>History that is never rewritten</h3>
+      <p>Every saved month keeps its own calculation. Change a tariff later and past
+      charges stay exactly as they were.</p>
     </div>
     <div class="card reveal">
       <picture>
@@ -129,8 +130,8 @@ try { var t = localStorage.getItem('platizhka-theme');
              sizes="(max-width: 56rem) 90vw, 19rem"
              width="288" height="234" loading="lazy" decoding="async" alt="">
       </picture>
-      <h3>Кілька адрес</h3>
-      <p>Квартира, дача, гараж — у кожної свій набір послуг і тарифів.</p>
+      <h3>Several addresses</h3>
+      <p>Flat, summer house, garage — each with its own services and tariffs.</p>
     </div>
     <div class="card reveal">
       <picture>
@@ -142,8 +143,8 @@ try { var t = localStorage.getItem('platizhka-theme');
              sizes="(max-width: 56rem) 90vw, 19rem"
              width="288" height="234" loading="lazy" decoding="async" alt="">
       </picture>
-      <h3>Нагадування</h3>
-      <p>Раз на місяць застосунок нагадає зняти показники. Час нагадування обираєте ви.</p>
+      <h3>Reminders</h3>
+      <p>Once a month the app reminds you to take readings. You choose the time.</p>
     </div>
     <div class="card reveal">
       <picture>
@@ -155,9 +156,9 @@ try { var t = localStorage.getItem('platizhka-theme');
              sizes="(max-width: 56rem) 90vw, 19rem"
              width="288" height="234" loading="lazy" decoding="async" alt="">
       </picture>
-      <h3>Працює офлайн</h3>
-      <p>Немає серверів: усі дані лишаються на пристрої. Резервна копія —
-      у файл, який ви зберігаєте самі.</p>
+      <h3>Works offline</h3>
+      <p>There are no servers: all data stays on the device. Backups go to a file you
+      keep yourself.</p>
     </div>
     <div class="card reveal">
       <picture>
@@ -169,9 +170,9 @@ try { var t = localStorage.getItem('platizhka-theme');
              sizes="(max-width: 56rem) 90vw, 19rem"
              width="288" height="234" loading="lazy" decoding="async" alt="">
       </picture>
-      <h3>Без підписок</h3>
-      <p>Безкоштовно, без вбудованих покупок і без рекламних банерів.
-      Нічого не треба вимикати чи скасовувати.</p>
+      <h3>No subscriptions</h3>
+      <p>Free, with no in-app purchases and no ad banners. There is nothing to switch
+      off or cancel.</p>
     </div>
   </div>
 </div>
@@ -188,19 +189,19 @@ try { var t = localStorage.getItem('platizhka-theme');
                srcset="/assets/img/screen-report.png 310w, /assets/img/screen-report@2x.png 620w"
                sizes="(max-width: 56rem) 62vw, 17rem"
                width="310" height="620" loading="lazy" decoding="async"
-               alt="Звіт за період: графік витрат по місяцях і порівняння рік до року">
+               alt="Period report: monthly spending chart and year-over-year comparison">
         </picture>
       </div>
     </div>
     <div class="prose reveal">
-      <h2>Видно, куди йдуть гроші</h2>
-      <p>Звіт за періоди показує витрати по місяцях графіком, середнє значення,
-      найдорожчий і найдешевший місяць та порівняння рік до року. Не «скільки я
-      заплатив цього разу», а як воно змінюється.</p>
+      <h2>You can see where the money goes</h2>
+      <p>The period report charts spending by month, with the average, the highest and
+      lowest month and a year-over-year comparison. Not "what did I pay this time" but
+      how it is changing.</p>
       <div class="stats">
-        <div><b>7</b><span>типів тарифів</span></div>
-        <div><b>3</b><span>мови інтерфейсу</span></div>
-        <div><b>0</b><span>серверів</span></div>
+        <div><b>7</b><span>tariff types</span></div>
+        <div><b>3</b><span>UI languages</span></div>
+        <div><b>0</b><span>servers</span></div>
       </div>
     </div>
   </section>
@@ -209,17 +210,17 @@ try { var t = localStorage.getItem('platizhka-theme');
 <div class="shell">
   <section class="split">
     <div class="prose reveal">
-      <h2>Для кого це</h2>
-    <p>Для тих, хто сам знімає показники й платить за електроенергію, воду, газ
-    і тепло — у квартирі, будинку, на дачі чи в орендованому житлі. Якщо ви досі
-    рахуєте в зошиті або в Excel, застосунок робить те саме, але не помиляється
-    в арифметиці й не губить попередні місяці.</p>
+      <h2>Who it is for</h2>
+    <p>For people who read their own meters and pay for electricity, water, gas and
+    heating — in a flat, a house, a summer place or a rented home. If you still do the
+    arithmetic in a notebook or a spreadsheet, this does the same thing without
+    arithmetic mistakes and without losing last year's numbers.</p>
 
     <div class="note">
-      <p><strong>Тарифів у застосунку немає — і це навмисно.</strong> Ставки різні
-      по регіонах і постачальниках і змінюються. Тому ви вводите свої: ті, що
-      надруковані у вашій платіжці або в договорі. Застосунок відповідає за
-      арифметику, а не за здогади про ваші ціни.</p>
+      <p><strong>The app ships no tariff rates, on purpose.</strong> Rates differ by
+      region and supplier and they change. So you enter your own — the ones printed on
+      your bill or in your contract. The app is responsible for the arithmetic, not for
+      guessing your prices.</p>
     </div>
     </div>
     <div class="hero__art reveal">
@@ -232,7 +233,7 @@ try { var t = localStorage.getItem('platizhka-theme');
                srcset="/assets/img/screen-readings.png 310w, /assets/img/screen-readings@2x.png 620w"
                sizes="(max-width: 56rem) 62vw, 14rem"
                width="310" height="620" loading="lazy" decoding="async"
-               alt="Екран введення показників: попереднє й поточне значення для кожної послуги">
+               alt="Readings entry screen: previous and current value for each service">
         </picture>
       </div>
     </div>
@@ -241,15 +242,14 @@ try { var t = localStorage.getItem('platizhka-theme');
 
 <div class="shell">
   <section class="cta reveal">
-    <h2>Розібратися з тарифами</h2>
-    <p>Найчастіше питання не в застосунку, а в тому, як узагалі влаштований
-    розрахунок: чому ступені споживання рахуються не так, як здається, і що
-    насправді дає двозонний лічильник.</p>
+    <h2>Making sense of tariffs</h2>
+    <p>Usually the hard part is not the app but the billing itself: why consumption
+    blocks do not work the way they look, and what a two-zone meter actually changes.</p>
     <div class="btnrow">
-      <a class="btn" href="/blog/">Читати блог</a>
+      <a class="btn" href="/en/blog/">Read the blog</a>
       <a class="gplay" href="https://play.google.com/store/apps/details?id=com.komunalka.komunalka">
-        <img src="/assets/img/gplay-uk.png" width="646" height="250"
-             alt="Завантажити з Google Play">
+        <img src="/assets/img/gplay-en.png" width="646" height="250"
+             alt="Get it on Google Play">
       </a>
     </div>
   </section>
@@ -261,7 +261,7 @@ try { var t = localStorage.getItem('platizhka-theme');
     <div>© 2026 Платіжка · <a href="mailto:platizhka.app@gmail.com">platizhka.app@gmail.com</a></div>
     <div>
       <a href="https://play.google.com/store/apps/details?id=com.komunalka.komunalka">Google Play</a> ·
-      <a href="https://dartvadius.github.io/platizhka-privacy/">Політика конфіденційності</a>
+      <a href="https://dartvadius.github.io/platizhka-privacy/">Privacy policy</a>
     </div>
   </div>
 </footer>

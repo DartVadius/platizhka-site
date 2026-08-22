@@ -1,0 +1,16 @@
+# Платіжка
+
+> Utility-bill calculator for Android. The user enters their own tariffs; the app computes monthly charges from meter readings and works offline. This site explains how the tariff mechanics work.
+
+Install: https://play.google.com/store/apps/details?id=com.komunalka.komunalka
+
+## Pages
+- https://platizhka.com.ua/
+- https://platizhka.com.ua/ru/
+- https://platizhka.com.ua/en/
+- https://platizhka.com.ua/en/blog/
+- https://platizhka.com.ua/ru/blog/
+- https://platizhka.com.ua/blog/
+- https://platizhka.com.ua/blog/dvozonnyi-taryf/
+- https://platizhka.com.ua/ru/blog/dvozonnyi-taryf/
+- https://platizhka.com.ua/en/blog/dvozonnyi-taryf/

@@ -1,0 +1,100 @@
+title: Two-zone electricity meters: how a day/night tariff is actually calculated
+description: Two-zone metering is not "cheaper at night" — it is two independent registers billed at different rates. The mechanics of the calculation, a worked example, and when switching does not pay off.
+summary: Why a two-zone meter does not make electricity cheaper, how billing across two registers works, and when the switch is not worth it.
+date: 2026-08-22
+---
+<p>A two-zone meter is usually sold as "the night rate is cheaper". That is only half
+true, and the other half is why people feel let down after switching. Here is what
+actually happens.</p>
+
+<h2>One meter, two registers</h2>
+
+<p>An ordinary meter has a single total register: one number that grows with every
+kilowatt-hour. A two-zone meter has <strong>two independent registers</strong>. The
+device knows the time of day and adds consumption to whichever register matches the
+current zone — day or night.</p>
+
+<p>So the "night tariff" is not a discount on your bill. It is a separate bill for a
+separate slice of consumption. You pay twice at two rates, rather than once at a
+reduced one.</p>
+
+<div class="note">
+  <p><strong>The practical consequence, up front:</strong> the saving depends not on
+  owning a two-zone meter but on <em>what share</em> of your consumption falls into
+  the night zone. If the only thing running at night is the fridge, there is nothing
+  to split.</p>
+</div>
+
+<h2>What the calculation looks like</h2>
+
+<p>The mechanics are the same whatever the rates and zone boundaries are:</p>
+
+<ol>
+  <li>Read both values — day and night. The meter labels them separately, often T1
+  and T2.</li>
+  <li>Subtract the previous value <em>of the same register</em> from each. You now
+  have two consumption figures.</li>
+  <li>Multiply each by <strong>its own</strong> rate.</li>
+  <li>Add the results. That is the electricity charge.</li>
+</ol>
+
+<p>The most common mistake is in step two: subtracting the previous *total* instead of
+the previous value of the same register. The registers advance independently and must
+never be mixed.</p>
+
+<h3>A worked example</h3>
+
+<p>The numbers below are <strong>illustrative</strong>: rates differ by region and
+supplier and they change. Take yours from your own bill or contract — what matters
+here is the structure, not these figures.</p>
+
+<div class="scroll-x">
+<table>
+  <thead>
+    <tr><th>Register</th><th>Previous</th><th>Current</th><th>Used</th><th>Rate (example)</th><th>Charge</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Day (T1)</td><td>14,320</td><td>14,510</td><td>190</td><td>4.00</td><td>760.00</td></tr>
+    <tr><td>Night (T2)</td><td>6,180</td><td>6,290</td><td>110</td><td>2.00</td><td>220.00</td></tr>
+    <tr><td><strong>Total</strong></td><td></td><td></td><td><strong>300</strong></td><td></td><td><strong>980.00</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Compare that with single-zone billing at the same day rate: 300 × 4.00 = 1,200.00.
+The saving here is 220, and all of it rests on the 110 kWh that landed in the night
+zone. Had the night share been 20 instead of 110, the saving would have been about 40.</p>
+
+<h2>When switching does not pay off</h2>
+
+<p>A two-zone meter has to be bought and installed, and that cost is repaid only by
+night consumption. So the sum is simple: multiply your expected night share by the
+difference between the day and night rates — that is the monthly saving. Divide the
+installation cost by it and you have the payback period in months.</p>
+
+<p>If that comes out beyond two or three years, look first at whether consumption can
+be moved into the night zone at all. What genuinely moves:</p>
+
+<ul>
+  <li>a water heater — the largest item, if you heat on a schedule rather than on demand;</li>
+  <li>washing machine and dishwasher — most have a delayed start;</li>
+  <li>charging an electric vehicle;</li>
+  <li>electric heating and underfloor heating with heat storage.</li>
+</ul>
+
+<p>What will not move: lighting, cooking, television, computer — everything you need
+precisely while you are awake.</p>
+
+<div class="note">
+  <p><strong>The exact zone boundaries and coefficients are set by the regulator</strong>
+  and they change, which is why this article deliberately does not state them. Find
+  yours on your bill, in your supply contract, or in your supplier's tariff schedule.
+  The mechanics above do not depend on those numbers.</p>
+</div>
+
+<h2>How this works in Platizhka</h2>
+
+<p>In the app a two-zone tariff is set up as a zoned one: you create "day" and "night"
+zones with your own rates, then enter two readings each month instead of one. The app
+performs the calculation above and stores it together with the month — so if the rates
+change later, past charges stay exactly as they were.</p>
