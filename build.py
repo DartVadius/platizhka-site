@@ -48,6 +48,45 @@ OG_LOCALE = {"uk": "uk_UA", "ru": "ru_RU", "en": "en_US",
              "de": "de_DE", "fr": "fr_FR", "es": "es_ES", "pt": "pt_PT"}
 
 
+# Filled by main() before anything renders: per-language URLs that the chrome
+# needs but cannot derive on its own, because whether a page exists in a given
+# language is only known after the content directory has been scanned.
+LINKS = {}
+
+
+def analytics_snippet():
+    """The Cloudflare Web Analytics beacon, or nothing if no token is set.
+
+    Cookieless by design — Cloudflare states it uses no client-side state and
+    does not fingerprint by IP or User-Agent — so this needs no consent banner.
+    What it still needs is a line in the privacy page, which is why that page
+    exists.
+
+    Host-guarded on purpose: a `python3 -m http.server` preview would otherwise
+    report into the same dashboard, and at our traffic volume a dozen localhost
+    page views is not noise around the signal, it *is* the chart.
+    """
+    token = CFG.get("cf_beacon_token", "").strip()
+    if not token:
+        return ""
+    if not re.fullmatch(r"[0-9a-f]{16,64}", token):
+        raise SystemExit("cf_beacon_token does not look like a Cloudflare token: %r" % token)
+    return ("""<script>
+/* Cloudflare Web Analytics. No cookies, no localStorage, no fingerprinting,
+   therefore no consent banner; disclosed on the privacy page all the same. */
+if (location.hostname === %s) {
+  var b = document.createElement('script');
+  b.type = 'module';
+  b.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  b.setAttribute('data-cf-beacon', '{"token":"%s"}');
+  document.head.appendChild(b);
+}
+</script>""" % (json.dumps(SITE.split("//", 1)[1]), token))
+
+
+ANALYTICS = analytics_snippet()
+
+
 def read_fragment(path):
     """Split a content file into a `key: value` header and an HTML body."""
     with open(path, encoding="utf-8") as fh:
@@ -133,6 +172,10 @@ def render(template, lang, rel, available, meta, body, jsonld,
         "L_THEME": t["theme"], "L_PRIVACY": t["privacy"],
         "BRAND": CFG["brand"], "MARK": CFG["mark"],
         "CONTACT": CFG["contact"], "PRIVACY_URL": CFG["privacy_url"],
+        # The site's own privacy page when it exists in this language, else the
+        # app's policy — a footer link must never point at a 404.
+        "PRIVACY_PAGE": LINKS.get("privacy:" + lang, CFG["privacy_url"]),
+        "ANALYTICS": ANALYTICS,
         "INSTALL_URL": CFG["install_url"], "YEAR": str(date.today().year),
     }
     for name, svg in ICONS.items():
@@ -257,6 +300,25 @@ def main():
         for lang, (_m, _b, section) in per.items():
             present[lang].add(section)
     navs = {lang: build_nav(lang, present.get(lang, set())) for lang in LANGS}
+
+    # ── standalone pages ───────────────────────────────────────────────
+    # content/<lang>/pages/<slug>.html becomes /<slug>/. For anything that is
+    # neither the home page nor an article — privacy, and later about or terms.
+    # Deliberately absent from the nav: these are footer pages, linked from
+    # where they are actually needed, so they do not compete for header space.
+    # Scanned before rendering because the footer link on *every* page depends
+    # on which languages have the privacy page at all.
+    standalone = {}
+    for lang in LANGS:
+        d = os.path.join(ROOT, "content", lang, "pages")
+        if not os.path.isdir(d):
+            continue
+        for name in sorted(os.listdir(d)):
+            if name.endswith(".html"):
+                standalone.setdefault(name[:-5], {})[lang] = os.path.join(d, name)
+
+    for lang in standalone.get("privacy", {}):
+        LINKS["privacy:" + lang] = url_for(lang, "privacy")
 
     built = []
 
@@ -403,6 +465,22 @@ def main():
             page = render(template, lang, rel, available, meta, article, jsonld,
                           og_type="article", nav=navs[lang])
             built.append((url_for(lang, rel), write(url_for(lang, rel) + "index.html", page)))
+
+    for slug, per in sorted(standalone.items()):
+        available = [l for l in LANGS if l in per]
+        for lang in available:
+            meta, body = read_fragment(per[lang])
+            for field in ("title", "description"):
+                if field not in meta:
+                    raise SystemExit("%s/pages/%s: header is missing '%s'"
+                                     % (lang, slug, field))
+            jsonld = {"@context": "https://schema.org", "@type": "WebPage",
+                      "name": meta["title"], "description": meta["description"],
+                      "url": SITE + url_for(lang, slug), "inLanguage": lang}
+            page = render(template, lang, slug, available, meta, body, jsonld,
+                          nav=navs[lang])
+            built.append((url_for(lang, slug),
+                          write(url_for(lang, slug) + "index.html", page)))
 
     # ── sitemap ────────────────────────────────────────────────────────
     urls = "".join("<url><loc>%s%s</loc></url>" % (SITE, path) for path, _ in built)

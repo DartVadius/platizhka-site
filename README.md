@@ -75,6 +75,47 @@ configure. Each page canonicalises to itself (Google's guidance for paginated
 series) and carries hreflang only for the languages that actually have that page
 number, since languages accumulate posts at different rates.
 
+## Standalone pages
+
+`content/<lang>/pages/<slug>.html` becomes `/<slug>/` — for anything that is
+neither the home page nor an article. Header needs `title` and `description`;
+the body is the full page markup, like `index.html` and unlike an article (the
+generator adds no `<h1>` or breadcrumbs of its own).
+
+These are deliberately **not** in the header nav — they are footer pages. The
+footer's privacy link resolves per language, and falls back to `privacy_url`
+(the app's own policy) for any language that has no `pages/privacy.html`, so the
+link can never 404.
+
+## Visitor analytics
+
+`cf_beacon_token` in `site.json` — the Cloudflare Web Analytics site token, from
+**Web Analytics → Add a site → Manage site** in the Cloudflare dashboard. The
+domain does not need to be on Cloudflare's DNS; the beacon is added by hand,
+which is what the manual snippet is for.
+
+Empty token means no script is emitted at all, so a fork with no analytics is the
+default rather than a thing to remember to strip.
+
+Why this one and not the obvious alternatives:
+
+- Cookieless and no fingerprinting, so **no consent banner** — which matters
+  because a good part of the audience is the Ukrainian diaspora in the EEA.
+  GA4 and Microsoft Clarity both require consent mode there.
+- Free with no traffic cap and **no commercial/non-commercial split**. That last
+  part is the one that decided it: GoatCounter's hosted tier is free only for
+  non-commercial sites, and Terrella sells in-app purchases.
+- It reports real-user Core Web Vitals, which Search Console cannot at our
+  traffic volume — its report needs enough CrUX data to exist.
+
+⚠ The emitted snippet is **host-guarded** against `location.hostname`. A local
+`python3 -m http.server` preview would otherwise report into the same dashboard,
+and at low volume a dozen localhost page views is not noise around the signal, it
+is the chart. Any new domain must be added to `site.json`, not just to DNS.
+
+Whatever is collected has to stay described on `pages/privacy.html`. Cookieless
+is not the same as exempt: no banner is needed, a disclosure still is.
+
 ## Reusing this for another product
 
 `build.py`, `templates/` and `assets/style.css` contain nothing product-specific.
@@ -87,6 +128,12 @@ To stand up a second site (Terrella):
 3. Generate a fresh IndexNow key: `python3 -c "import secrets;print(secrets.token_hex(16))"`,
    save it to `<key>.txt` in the site root and to `indexnow_key` in site.json.
 4. Replace `assets/img/` and the favicon, then write content.
+5. Add the new site in Cloudflare Web Analytics and put **its own**
+   `cf_beacon_token` in `site.json` — copying ours would merge two products'
+   traffic into one dashboard. Leave it empty to ship without analytics.
+6. Translate `content/<lang>/pages/privacy.html`. The hosting and analytics
+   paragraphs carry over; the app paragraph does not — Terrella talks to
+   Wikipedia and sells in-app purchases, so its text is genuinely different.
 
 Do **not** merge the two products into one domain. The audiences share no
 language, queries or reason to link, and topical coherence is a real ranking

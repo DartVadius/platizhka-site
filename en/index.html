@@ -259,11 +259,22 @@ try { var t = localStorage.getItem('platizhka-theme');
     <div>© 2026 Платіжка · <a href="mailto:platizhka.app@gmail.com">platizhka.app@gmail.com</a></div>
     <div>
       <a href="https://play.google.com/store/apps/details?id=com.komunalka.komunalka">Google Play</a> ·
-      <a href="https://dartvadius.github.io/platizhka-privacy/">Privacy policy</a>
+      <a href="/en/privacy/">Privacy policy</a>
     </div>
   </div>
 </footer>
 
 <script src="/assets/app.js" defer></script>
+<script>
+/* Cloudflare Web Analytics. No cookies, no localStorage, no fingerprinting,
+   therefore no consent banner; disclosed on the privacy page all the same. */
+if (location.hostname === "platizhka.com.ua") {
+  var b = document.createElement('script');
+  b.type = 'module';
+  b.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  b.setAttribute('data-cf-beacon', '{"token":"82c9e878b83b43b18090f01d7a32c176"}');
+  document.head.appendChild(b);
+}
+</script>
 </body>
 </html>
