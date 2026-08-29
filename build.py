@@ -449,7 +449,23 @@ def main():
                     '<span class="kind%s">%s</span>%s</p><h1>%s</h1></div>'
                     % (cls, html.escape(t.get("kind_" + kind, kind)), stamp,
                        html.escape(meta["title"])))
-            tail = ('<div class="shell"><p><a class="btn btn--ghost" href="%s">%s</a></p></div>'
+            # ⚠ Every post ends with a way to act. Before this the only link to
+            # the app on an article page was a text one in the FOOTER, next to
+            # the privacy policy — the place nobody reads as a call to action.
+            # A reader convinced by «Як це виглядає в Платіжці» had nowhere to
+            # go but back to the blog index.
+            #
+            # ⚠ The link carries a `referrer` tag. Play passes it through to the
+            # install and reports tagged arrivals apart from organic, which is
+            # the only way we will ever learn whether the articles produce
+            # installs — an untagged link makes the whole content effort
+            # unmeasurable.
+            install = "%s&referrer=%s" % (CFG["install_url"], CFG["install_referrer"])
+            cta = ('<div class="shell cta"><p>%s</p>'
+                   '<div class="btnrow"><a class="btn" href="%s">%s</a></div></div>'
+                   % (html.escape(t["cta_lead"]), install, html.escape(t["cta_btn"])))
+            tail = (cta
+                    + '<div class="shell"><p><a class="btn btn--ghost" href="%s">%s</a></p></div>'
                     % (url_for(lang, section), t["back"] if section == "blog" else label))
             article = ('%s%s<article class="shell prose">%s</article>%s'
                        % (crumbs, head, body, tail))

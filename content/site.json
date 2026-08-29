@@ -33,7 +33,9 @@
       "updated": "Оновлено",
       "news": "Новини",
       "news_title": "Новини тарифів — Платіжка",
-      "news_desc": "Зміни тарифів і законодавства щодо комунальних платежів: що змінилося, з якої дати діє і на що це впливає у розрахунку."
+      "news_desc": "Зміни тарифів і законодавства щодо комунальних платежів: що змінилося, з якої дати діє і на що це впливає у розрахунку.",
+      "cta_lead": "Платіжка веде цю історію за вас: показання, суми й тарифи — на телефоні, без інтернету.",
+      "cta_btn": "Завантажити з Google Play"
     },
     "ru": {
       "nav": "Навигация",
@@ -51,7 +53,9 @@
       "updated": "Обновлено",
       "news": "Новости",
       "news_title": "Новости тарифов — Платіжка",
-      "news_desc": "Изменения тарифов и законодательства по коммунальным платежам: что изменилось, с какой даты действует и на что влияет в расчёте."
+      "news_desc": "Изменения тарифов и законодательства по коммунальным платежам: что изменилось, с какой даты действует и на что влияет в расчёте.",
+      "cta_lead": "Платижка ведёт эту историю за вас: показания, суммы и тарифы — на телефоне, без интернета.",
+      "cta_btn": "Скачать в Google Play"
     },
     "en": {
       "nav": "Navigation",
@@ -69,9 +73,12 @@
       "updated": "Updated",
       "news": "News",
       "news_title": "Tariff news — Platizhka",
-      "news_desc": "Changes to utility tariffs and regulation: what changed, when it takes effect, and what it means for the calculation."
+      "news_desc": "Changes to utility tariffs and regulation: what changed, when it takes effect, and what it means for the calculation.",
+      "cta_lead": "Платіжка keeps that record for you: readings, amounts and tariffs on your phone, offline.",
+      "cta_btn": "Get it on Google Play"
     }
   },
   "indexnow_key": "c174f65a92cee489954b676b181b035b",
-  "cf_beacon_token": "82c9e878b83b43b18090f01d7a32c176"
+  "cf_beacon_token": "82c9e878b83b43b18090f01d7a32c176",
+  "install_referrer": "utm_source%3Dplatizhka.com.ua%26utm_medium%3Dblog"
 }
