@@ -73,6 +73,33 @@ deliberately NOT planned. They draw the most traffic and they rot: every one
 becomes a maintenance obligation, and a site this size cannot carry a shelf of
 articles that must be re-checked each January.
 
+## ⚠ Every cluster above is electricity, and nobody noticed
+
+Counted 2026-09-05, at three published articles: of the thirteen planned topics
+**eleven are electricity or service-neutral, two mention gas, none mention water.**
+All three published articles are electricity. Owner: «кроме электричества, по
+счётчику ещё воду и газ считают, надо будет в следующий раз сменить тип услуги».
+
+**Why it happened.** Electricity is where the meter questions are richest — zones,
+day/night, recalculations — so every topic that suggested itself was an electricity
+topic. The app does not have that bias: it bills water, gas and heating on the same
+eight tariff types.
+
+**What it costs.** Someone searching «як рахують воду за лічильником» finds nothing of
+ours, and the site looks like a tool for one utility rather than for the bill as a
+whole.
+
+⚠ **The articles cannot simply be relabelled.** The mechanics repeat — a missed
+reading is estimated from your own average day for water and gas as well — but the
+SOURCES do not: the electricity pieces cite the retail electricity market rules and
+say «обленерго». A water version has to be sourced from the water-supply rules and
+name the водоканал. Same shape, different research pass.
+
+**Next article: change the utility, not the question.** The obvious pair to the one
+just published is the same missed-reading mechanics for **water** — highest household
+familiarity, zero coverage, and the one utility where a reading is submitted to a
+different organisation than the one that bills.
+
 ## English is a separate question
 
 The audience is Ukrainian — over the 28 days to 2026-08-29 Ukraine grew 1→4
