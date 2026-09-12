@@ -55,8 +55,14 @@ someone typing "electricity tariff 2026" wants a number and leaves with it.
 **B. Readings and meters — high volume, good intent.**
 - як передати показання лічильника електроенергії
 - до якого числа передавати показання
-- що буде, якщо не передати показання
+- що буде, якщо не передати показання ✅ published 2026-09-05
 - смарт-лічильник: що це і як працює
+
+**E. Water — opened 2026-09-12, was the blind spot below.**
+- чому водовідведення дорівнює обсягу води ✅ published 2026-09-12
+  (also covers: no readings for water, and meter verification)
+- скільки коштує вода без лічильника / норми споживання
+- як передати показання води
 
 **C. Bills and recalculations — the surprise-driven searches.**
 - перерахунок за електроенергію ✅ published 2026-08-29
@@ -73,7 +79,7 @@ deliberately NOT planned. They draw the most traffic and they rot: every one
 becomes a maintenance obligation, and a site this size cannot carry a shelf of
 articles that must be re-checked each January.
 
-## ⚠ Every cluster above is electricity, and nobody noticed
+## ⚠ Every cluster above was electricity, and nobody noticed — closed 2026-09-12
 
 Counted 2026-09-05, at three published articles: of the thirteen planned topics
 **eleven are electricity or service-neutral, two mention gas, none mention water.**
@@ -99,6 +105,40 @@ name the водоканал. Same shape, different research pass.
 just published is the same missed-reading mechanics for **water** — highest household
 familiarity, zero coverage, and the one utility where a reading is submitted to a
 different organisation than the one that bills.
+
+✅ **Done 2026-09-12 — `/blog/voda-za-lichylnykom/`, all three languages.** The water
+blind spot is closed, and the article turned out stronger than «the same question, a
+different utility», which is worth recording:
+
+- **The spine is a mechanic electricity does not have.** Clause 22 of the Rules
+  (КМУ № 690 of 05.07.2019) sets the volume of водовідведення **equal to** the volume
+  of water supplied plus hot water. One meter reading produces two charges, and the
+  sewerage line has no lever of its own. That is a question people actually type, and
+  no electricity article could have carried it.
+- **Missed readings land on the NEIGHBOURS.** Clause 31: three months on the
+  consumer's own average day over the previous 12 months (absent history, the actual
+  period but not less than 15 days), then billing «as consumers whose premises are not
+  equipped with distribution metering units» — i.e. by the local authority's norms. And
+  once readings resume, the provider must redistribute the building's volume and
+  recalculate **with every consumer in the building**. The electricity piece has no
+  equivalent, because electricity is not distributed off a building meter this way.
+- **Verification is a water-specific pain** and the answer is counter-intuitive:
+  the flat's meter is a *distribution* unit, so ЗУ № 2119-VIII puts servicing and
+  verification on the OWNER, unlike the building's commercial unit. At least once per
+  six years for mechanical devices, nine for other types.
+
+⚠ **The sources were read from the primary texts, not from a summary.** A first
+research pass returned the three-month rule with «exact article numbers not
+accessible», and one of its confident answers (who pays for verification) was the one I
+most expected to be wrong — it turned out correct. Both were settled by pulling
+zakon.rada's print view and quoting the clause. Do the same for the next one: these
+readers pay these bills.
+
+⚠ **Not decided — my suggestion, not the owner's call.** The remaining water topics in
+cluster E (norms without a meter, how to submit a water reading) would deepen the
+cluster; gas is the other untouched utility and already has two entries sitting in
+cluster C. Whichever is next, the same rule applies: change the utility, keep the
+question shape.
 
 ## English is a separate question
 

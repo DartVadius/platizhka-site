@@ -20,6 +20,9 @@ Install: https://play.google.com/store/apps/details?id=com.komunalka.komunalka
 - https://platizhka.com.ua/blog/pokazannia-ne-peredani/
 - https://platizhka.com.ua/ru/blog/pokazannia-ne-peredani/
 - https://platizhka.com.ua/en/blog/pokazannia-ne-peredani/
+- https://platizhka.com.ua/blog/voda-za-lichylnykom/
+- https://platizhka.com.ua/ru/blog/voda-za-lichylnykom/
+- https://platizhka.com.ua/en/blog/voda-za-lichylnykom/
 - https://platizhka.com.ua/privacy/
 - https://platizhka.com.ua/ru/privacy/
 - https://platizhka.com.ua/en/privacy/
