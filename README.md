@@ -67,6 +67,26 @@ the custom domain — do not delete it, GitHub reads it on every build.
 spam policy targets "many pages without adding value"; three thin translations are
 worse than one good article.
 
+## `lastmod` in the sitemap — where the dates come from
+
+Emitted per URL, and **only where a real date exists**:
+
+- **an article** — its `updated:` if present, otherwise its `date:`;
+- **a section index** — the newest stamp among the posts listed on that page,
+  which is what actually changed there;
+- **the home page and standalone pages** — nothing, unless you put
+  `updated: YYYY-MM-DD` in the header. They have no date of their own, and that
+  field is how you give them one.
+
+⚠ **Do not "fix" the missing ones with a build-time today().** `lastmod` is
+optional per URL, and Google ignores the signal site-wide once it decides the
+values are untrustworthy — stamping every page on every rebuild claims the whole
+site changed each time `build.py` runs, which is exactly how that happens.
+
+⚠ Dates are validated (`stamp_date`): anything that is not `YYYY-MM-DD`, or that
+is in the future, **fails the build**. A wrong date here is invisible to us and
+visible to search engines, so it should not be able to ship.
+
 ## Pagination
 
 Ten posts per index page. Page 1 is `/blog/` forever; later pages are

@@ -106,6 +106,23 @@ def read_fragment(path):
     return meta, body.strip()
 
 
+def stamp_date(value, where):
+    """Validate a header date and return it as YYYY-MM-DD for <lastmod>.
+
+    ⚠ It fails the build rather than emitting a doubtful date. The sitemap is
+    the one place where a typo is invisible to us and visible to Google: a
+    malformed or future lastmod is not a broken page anyone would notice, it is
+    a quiet reason to distrust every lastmod on the site.
+    """
+    try:
+        parsed = date.fromisoformat(value)
+    except ValueError:
+        raise SystemExit("%s: date %r is not YYYY-MM-DD" % (where, value))
+    if parsed > date.today():
+        raise SystemExit("%s: date %r is in the future" % (where, value))
+    return parsed.isoformat()
+
+
 PER_PAGE = 10  # posts per index page
 
 # `kind:` in an article header decides which section it lands in, and therefore
@@ -327,6 +344,21 @@ def main():
 
     built = []
 
+    # url -> YYYY-MM-DD for the sitemap's <lastmod>.
+    #
+    # ⚠ Deliberately a side table rather than a third element of `built`: three
+    # other places unpack it as `for path, _ in built`, and widening the tuple
+    # to add one optional field is how those quietly break.
+    #
+    # ⚠ **A page with no known date gets no <lastmod>, and that is the point.**
+    # The tag is optional per URL, and Google states it ignores lastmod site-wide
+    # once it finds the values untrustworthy — so a build-time `today()` on every
+    # page, which is the easy thing to write, is worse than nothing: it would
+    # claim the whole site changed on every rebuild. Articles and section indexes
+    # know their dates. The home page and the standalone pages do not, until
+    # someone puts `updated:` in their header.
+    lastmod = {}
+
     # ── home pages ─────────────────────────────────────────────────────
     home_langs = [l for l in LANGS
                   if os.path.exists(os.path.join(ROOT, "content", l, "index.html"))]
@@ -340,6 +372,8 @@ def main():
         page = render(template, lang, "", home_langs, meta, body, jsonld,
                       nav=navs[lang])
         built.append((url_for(lang, ""), write(url_for(lang, "") + "index.html", page)))
+        if "updated" in meta:
+            lastmod[url_for(lang, "")] = stamp_date(meta["updated"], "%s/index.html" % lang)
 
     # ── section indexes, paginated ─────────────────────────────────────
     # Pagination is wired up from the start even though one post does not need
@@ -427,6 +461,12 @@ def main():
             page = render(template, lang, rel, available, index_meta, body, jsonld,
                           nav=navs[lang])
             built.append((url_for(lang, rel), write(url_for(lang, rel) + "index.html", page)))
+            # An index page changed when its newest post did — and `updated`
+            # counts, because the card on this page shows that stamp, not `date`.
+            if chunk:
+                lastmod[url_for(lang, rel)] = max(
+                    stamp_date(m.get("updated", m["date"]), "%s/%s" % (lang, sl))
+                    for sl, m, _b in chunk)
 
     # ── posts ──────────────────────────────────────────────────────────
     for slug, per in sorted(posts.items()):
@@ -491,6 +531,8 @@ def main():
             page = render(template, lang, rel, available, meta, article, jsonld,
                           og_type="article", nav=navs[lang])
             built.append((url_for(lang, rel), write(url_for(lang, rel) + "index.html", page)))
+            lastmod[url_for(lang, rel)] = stamp_date(
+                meta.get("updated", meta["date"]), "%s/%s" % (lang, slug))
 
     for slug, per in sorted(standalone.items()):
         available = [l for l in LANGS if l in per]
@@ -507,9 +549,16 @@ def main():
                           nav=navs[lang])
             built.append((url_for(lang, slug),
                           write(url_for(lang, slug) + "index.html", page)))
+            if "updated" in meta:
+                lastmod[url_for(lang, slug)] = stamp_date(
+                    meta["updated"], "%s/pages/%s" % (lang, slug))
 
     # ── sitemap ────────────────────────────────────────────────────────
-    urls = "".join("<url><loc>%s%s</loc></url>" % (SITE, path) for path, _ in built)
+    urls = "".join(
+        "<url><loc>%s%s</loc>%s</url>"
+        % (SITE, path,
+           "<lastmod>%s</lastmod>" % lastmod[path] if path in lastmod else "")
+        for path, _ in built)
     write("sitemap.xml",
           '<?xml version="1.0" encoding="UTF-8"?>\n'
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">%s</urlset>\n' % urls)
