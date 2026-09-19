@@ -67,8 +67,8 @@ someone typing "electricity tariff 2026" wants a number and leaves with it.
 **C. Bills and recalculations — the surprise-driven searches.**
 - перерахунок за електроенергію ✅ published 2026-08-29
 - чому прийшов великий рахунок за електроенергію
-- що таке абонплата за газ
-- доставка газу окремим рядком
+- що таке абонплата за газ ✅ published 2026-09-19 (same article)
+- доставка газу окремим рядком ✅ published 2026-09-19
 
 **D. Tariffs — highest volume, weakest fit.**
 - чи вигідно переходити на двозонний лічильник
@@ -139,6 +139,43 @@ cluster E (norms without a meter, how to submit a water reading) would deepen th
 cluster; gas is the other untouched utility and already has two entries sitting in
 cluster C. Whichever is next, the same rule applies: change the utility, keep the
 question shape.
+
+✅ **Gas chosen by the owner 2026-09-19 — `/blog/dostavka-hazu/`, all three languages.**
+Both cluster C gas entries closed by one article, because "абонплата" and "доставка
+окремим рядком" turn out to be the same line asked about twice.
+
+⚠ **The article changed shape mid-research, and the reason is worth keeping.** It was
+planned as "two lines on the bill, like the water one". The owner challenged the premise
+— *«точно это не регулируется так, что оператор просто считает среднюю стоимость
+транзита куба?»* — and holding that challenge is what found the real subject: the
+distribution line is **не за спожите взагалі**, it is 1/12 of the previous gas year's
+volume × tariff, identical every month of the calendar year. The spine of the piece is
+now that, not the two-line split.
+
+⚠ **The trap that made the challenge reasonable, and that no source states outright.**
+Tariff aggregators (Мінфін and the like) print the distribution rate as «грн за 1 м³»,
+which reads as the price of a delivered cubic metre. NEURC's own table says «грн за 1 м3
+**на місяць**», and the standard contract finishes the thought: «місячна вартість одного
+кубічного метра **замовленої потужності**». Same number, opposite meaning. An owner who
+checks sources reached the wrong model from the aggregator — so that gap is a section of
+the article, not a footnote.
+
+⚠ **Sourced from the contract, not from explainers.** The decisive quotes are п. 6.1,
+6.3 and 6.5 of the Типовий договір розподілу (pulled from two operators' own PDFs and
+text-extracted), постанова НКРЕКП № 580 від 06.03.2020 for the capacity rule and the
+39/126/314 м³ minimums, and the NEURC tariff table for the unit. Two separate research
+passes returned confident claims that the primary text did not support — a household
+"seal your appliances and stop paying" mechanism that постанова № 1150 does not contain,
+and a 2026 tariff rise that the wartime freeze contradicts. Neither reached the article.
+
+⚠ **Left out deliberately:** the 2017 абонплата episode (found only in a secondary
+summary, never verified against the постанови) and every hryvnia figure (the site's
+no-rates rule). The worked example uses an openly conditional rate.
+
+⚠ **Not decided — my reading, not the owner's call.** Cluster E's remaining water topics
+and the electricity-side "чому прийшов великий рахунок" are still open. Gas itself now
+has a second question worth its own piece: м³ versus кВт·год on the bill, which the
+research touched and the article does not cover.
 
 ## English is a separate question
 

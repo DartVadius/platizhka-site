@@ -11,6 +11,9 @@ Install: https://play.google.com/store/apps/details?id=com.komunalka.komunalka
 - https://platizhka.com.ua/en/blog/
 - https://platizhka.com.ua/ru/blog/
 - https://platizhka.com.ua/blog/
+- https://platizhka.com.ua/blog/dostavka-hazu/
+- https://platizhka.com.ua/ru/blog/dostavka-hazu/
+- https://platizhka.com.ua/en/blog/dostavka-hazu/
 - https://platizhka.com.ua/blog/dvozonnyi-taryf/
 - https://platizhka.com.ua/ru/blog/dvozonnyi-taryf/
 - https://platizhka.com.ua/en/blog/dvozonnyi-taryf/
