@@ -20,6 +20,9 @@ Install: https://play.google.com/store/apps/details?id=com.komunalka.komunalka
 - https://platizhka.com.ua/blog/pererahunok-oblenergo/
 - https://platizhka.com.ua/ru/blog/pererahunok-oblenergo/
 - https://platizhka.com.ua/en/blog/pererahunok-oblenergo/
+- https://platizhka.com.ua/blog/pereviryty-narahuvannia/
+- https://platizhka.com.ua/ru/blog/pereviryty-narahuvannia/
+- https://platizhka.com.ua/en/blog/pereviryty-narahuvannia/
 - https://platizhka.com.ua/blog/pokazannia-ne-peredani/
 - https://platizhka.com.ua/ru/blog/pokazannia-ne-peredani/
 - https://platizhka.com.ua/en/blog/pokazannia-ne-peredani/
