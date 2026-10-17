@@ -213,6 +213,23 @@ td { color: var(--ink-soft); }
   color: var(--ink-faint); font-size: .95rem; }
 .foot__in { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; }
 .foot a { color: var(--ink-soft); }
+.foot__apps { flex-basis: 100%; }
+
+/* ── screenshots inside an article ─────────────────────────────────────
+   A row of phone screens with captions. Phones are tall, so a single one at
+   full measure would fill two screens of scrolling; three across keeps them at
+   the size a reader recognises an app screen from. */
+.shots {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1rem; margin: 1.75rem 0; padding: 0; list-style: none;
+}
+.prose .shots li { margin: 0; }
+.shots figure { margin: 0; }
+.shots img {
+  display: block; width: 100%; height: auto; border-radius: 14px;
+  border: 1px solid var(--line); box-shadow: var(--shadow); background: #05070c;
+}
+.shots figcaption { margin-top: .55rem; font-size: .9rem; color: var(--ink-faint); }
 
 /* ── narrow screens ─────────────────────────────────────────────────── */
 @media (max-width: 46rem) {

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terrella: an interactive 3D globe and historical world map, a new app from Lumenware Labs</title>
+<meta name="description" content="Terrella is an interactive 3D globe of the Earth for Android: a world map with countries, a historical world map with a timeline from 6000 BCE, a star map with all 88 constellations and a geography quiz. Works offline.">
+<link rel="canonical" href="https://platizhka.com.ua/en/blog/terrella/">
+<link rel="alternate" hreflang="uk" href="https://platizhka.com.ua/blog/terrella/">
+<link rel="alternate" hreflang="ru" href="https://platizhka.com.ua/ru/blog/terrella/">
+<link rel="alternate" hreflang="en" href="https://platizhka.com.ua/en/blog/terrella/">
+<link rel="alternate" hreflang="x-default" href="https://platizhka.com.ua/blog/terrella/">
+<meta name="theme-color" content="#1E4CB3">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Платіжка">
+<meta property="og:url" content="https://platizhka.com.ua/en/blog/terrella/">
+<meta property="og:title" content="Terrella — a world globe from the makers of Платіжка">
+<meta property="og:description" content="Terrella is an interactive 3D globe of the Earth for Android: a world map with countries, a historical world map with a timeline from 6000 BCE, a star map with all 88 constellations and a geography quiz. Works offline.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://platizhka.com.ua/assets/img/terrella/og-en.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Terrella — a world globe from the makers of Платіжка">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://platizhka.com.ua/assets/img/terrella/og-en.png">
+<meta name="twitter:title" content="Terrella — a world globe from the makers of Платіжка">
+<meta name="twitter:description" content="Terrella is an interactive 3D globe of the Earth for Android: a world map with countries, a historical world map with a timeline from 6000 BCE, a star map with all 88 constellations and a geography quiz. Works offline.">
+<link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/style.css">
+<script>
+/* Runs before first paint. Two jobs, both about avoiding a flash:
+   apply a saved theme, and mark that scripting is on so the reveal styles
+   engage from the very first frame instead of after `defer` fires. */
+document.documentElement.classList.add('js');
+try { var t = localStorage.getItem('platizhka-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BlogPosting","headline":"Terrella: an interactive 3D globe and historical world map, a new app from Lumenware Labs","description":"Terrella is an interactive 3D globe of the Earth for Android: a world map with countries, a historical world map with a timeline from 6000 BCE, a star map with all 88 constellations and a geography quiz. Works offline.","datePublished":"2026-10-17","dateModified":"2026-10-17","inLanguage":"en","mainEntityOfPage":"https://platizhka.com.ua/en/blog/terrella/","author":{"@type":"Person","name":"Vadym Khoruzhyi"},"publisher":{"@type":"Organization","name":"Платіжка"},"isPartOf":{"@type":"Blog","url":"https://platizhka.com.ua/en/blog/"},"about":{"@type":"SoftwareApplication","name":"Terrella","applicationCategory":"EducationalApplication","operatingSystem":"Android 7.0+","installUrl":"https://play.google.com/store/apps/details?id=com.globus.globus","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Vadym Khoruzhyi"}}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://platizhka.com.ua/en/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://platizhka.com.ua/en/blog/"},{"@type":"ListItem","position":3,"name":"Terrella: an interactive 3D globe and historical world map, a new app from Lumenware Labs"}]}]}</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="shell top__in">
+    <a class="brand" href="/en/">
+      <span class="brand__mark" aria-hidden="true">₴</span>
+      <span>Платіжка</span>
+    </a>
+    <nav aria-label="Navigation">
+<a class="navlink" href="/en/">App</a><a class="navlink" href="/en/blog/">Blog</a>
+      <span class="langs"><a href="/blog/terrella/" hreflang="uk" lang="uk">uk</a><a href="/ru/blog/terrella/" hreflang="ru" lang="ru">ru</a><a href="/en/blog/terrella/" hreflang="en" lang="en" aria-current="true">en</a></span>
+      <button class="themebtn" type="button" aria-label="Theme"
+              data-label-dark="Theme" data-label-light="Theme">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="shell crumbs"><a href="/en/">Home</a> / <a href="/en/blog/">Blog</a></div><div class="shell posthead prose"><p class="meta"><span class="kind">New app</span>2026-10-17</p><h1>Terrella: an interactive 3D globe and historical world map, a new app from Lumenware Labs</h1></div><article class="shell prose"><p>This blog usually explains how utility bills are calculated. Today is the exception:
+<strong>Lumenware Labs</strong>, the team behind Платіжка, has released a second app. It
+is called <strong>Terrella</strong>, and it is a globe you can put in your pocket.</p>
+
+<p>Spin it with a finger, zoom in, tap any country, river or mountain range and read
+about it. Drag the timeline and the borders redraw themselves: empires appear, spread and
+vanish in front of you.</p>
+
+<ul class="shots">
+  <li><figure>
+    <img src="/assets/img/terrella/political.webp" width="240" height="427" loading="lazy" decoding="async"
+         alt="Terrella's political globe with country and sea names">
+    <figcaption>The political globe</figcaption>
+  </figure></li>
+  <li><figure>
+    <img src="/assets/img/terrella/historical.webp" width="240" height="427" loading="lazy" decoding="async"
+         alt="Terrella's historical globe showing the borders of the year 1000">
+    <figcaption>The world in 1000 CE</figcaption>
+  </figure></li>
+  <li><figure>
+    <img src="/assets/img/terrella/stars.webp" width="240" height="427" loading="lazy" decoding="async"
+         alt="Terrella's star globe with constellations and star names">
+    <figcaption>The star globe</figcaption>
+  </figure></li>
+</ul>
+
+<h2>A 3D globe of the Earth, not a satellite photo</h2>
+
+<p>There is no shortage of maps on a phone, but nearly all of them are for getting
+somewhere: a road, an address, a route. Terrella is for <strong>looking at the
+world</strong>. It is drawn like a printed desk globe: relief in layer tints by height, a
+15° graticule, and names that run along countries, seas and mountain ranges instead of
+sitting on top of them as tags.</p>
+
+<p>Every map is stored on the phone. A connection is needed only to open the article
+about a place you tapped.</p>
+
+<h2>Seven globes, from a world map with countries to the solar system</h2>
+
+<ul>
+  <li><strong>Political</strong> — a world map with countries, regions and cities.</li>
+  <li><strong>Topographic</strong> — mountains, plains, plateaus.</li>
+  <li><strong>Hydrographic</strong> — rivers, lakes, seas and the ocean floor with its
+      trenches and ridges.</li>
+  <li><strong>Combined</strong> — the three above, laid over one another.</li>
+  <li><strong>Historical</strong> — the borders of states from 6000 BCE to the present.</li>
+  <li><strong>Solar system</strong> — real orbits, the planets and their moons.</li>
+  <li><strong>Star globe</strong> — the celestial sphere and its constellations.</li>
+</ul>
+
+<h2>A historical world map with a timeline</h2>
+
+<p>The historical globe is a world map with a timeline. Drag the slider and the map
+answers, and you watch the map of empires change over time: states rise and break apart, cities appear and the abandoned ones go dark.
+Cities also <strong>change their names</strong> with the eras, as they really did.</p>
+
+<p>The borders are not drawn by eye. They come from the <strong>Cliopatria</strong>
+historical atlas, a scholarly reconstruction of the borders of the world's states. Tap
+any state to read what is known about it.</p>
+
+<h2>A star map with all 88 constellations</h2>
+
+<p>New in version 1.1. All <strong>88 constellations</strong> and about <strong>5,000 of
+the brightest stars</strong>. Named stars have cards: distance in light years, colour,
+class. Asterisms are shown too — familiar shapes such as the Big Dipper that are not
+official constellations. And the sky can be seen <strong>from the inside</strong>, as a
+panorama around you.</p>
+
+<h2>Place cards and a geography quiz</h2>
+
+<p>Countries, cities, rivers, seas, mountains, historical states, planets and stars all
+open an information card with the Wikipedia article. When there is no article in your
+language, automatic translation from another one can be switched on.</p>
+
+<p>The geography and history quiz is built from the same data the globe draws: capitals,
+borders, flags, straits, which came first. The options are new every time, so the only
+thing you can memorise is the fact, not where the right button was.</p>
+
+<h2>What is free and what is in Pro</h2>
+
+<p>Free: all seven globes, search, the cards and the quiz. The free historical globe
+covers 1700 to the present.</p>
+
+<p><strong>Terrella Pro</strong> adds depth:</p>
+
+<ul>
+  <li>deeper zoom with regions and more detailed labels;</li>
+  <li>the whole timeline, back to 6000 BCE;</li>
+  <li>descending to the surfaces of planets and moons;</li>
+  <li>the advanced quiz level;</li>
+  <li>a live wallpaper: any of three globes on your home screen.</li>
+</ul>
+
+<p>Pro comes as a subscription or as a one-time lifetime purchase.</p>
+
+<div class="note">
+  <p><strong>Where the data comes from:</strong> Natural Earth, Wikipedia, Wikidata and
+  the Cliopatria historical atlas; NASA imagery for the satellite view. The app speaks
+  seven languages: English, German, French, Spanish, Portuguese, Ukrainian and
+  Russian.</p>
+</div>
+
+<p>Платіжка is not going anywhere: it stays free, and this blog will keep explaining
+tariffs. We simply have two apps now.</p></article><div class="shell cta"><p>Terrella is free: every globe, the cards and the quiz work without a purchase.</p><div class="btnrow"><a class="btn" href="https://play.google.com/store/apps/details?id=com.globus.globus&referrer=utm_source%3Dplatizhka.com.ua%26utm_medium%3Dblog%26utm_campaign%3Dterrella_launch">Get Terrella on Google Play</a></div></div><div class="shell"><p><a class="btn btn--ghost" href="/en/blog/">Back to blog</a></p></div>
+</main>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <div>© 2026 Платіжка · <a href="mailto:platizhka.app@gmail.com">platizhka.app@gmail.com</a></div>
+    <div>
+      <a href="https://play.google.com/store/apps/details?id=com.komunalka.komunalka">Google Play</a> ·
+      <a href="/en/privacy/">Privacy policy</a>
+    </div>
+    <div class="foot__apps">More apps from Lumenware Labs: <a href="https://play.google.com/store/apps/details?id=com.globus.globus&referrer=utm_source%3Dplatizhka.com.ua%26utm_medium%3Dfooter%26utm_campaign%3Dterrella_launch">Terrella</a></div>
+  </div>
+</footer>
+
+<script src="/assets/app.js" defer></script>
+<script>
+/* Cloudflare Web Analytics. No cookies, no localStorage, no fingerprinting,
+   therefore no consent banner; disclosed on the privacy page all the same. */
+if (location.hostname === "platizhka.com.ua") {
+  var b = document.createElement('script');
+  b.type = 'module';
+  b.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  b.setAttribute('data-cf-beacon', '{"token":"82c9e878b83b43b18090f01d7a32c176"}');
+  document.head.appendChild(b);
+}
+</script>
+</body>
+</html>

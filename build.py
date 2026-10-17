@@ -128,7 +128,10 @@ PER_PAGE = 10  # posts per index page
 # `kind:` in an article header decides which section it lands in, and therefore
 # its URL. "guide" is the default so existing articles keep their addresses.
 SECTIONS = ["blog", "news"]
-KIND_SECTION = {"guide": "blog", "news": "news"}
+# "launch" announces another product of the same publisher. It lives in the blog
+# (no section of its own for one post a year) but is labelled for what it is: a
+# card reading «Розбір» over an app announcement would misdescribe it.
+KIND_SECTION = {"guide": "blog", "news": "news", "launch": "blog"}
 
 
 def url_for(lang, rel):
@@ -183,7 +186,9 @@ def render(template, lang, rel, available, meta, body, jsonld,
         # Absolute URL on purpose: the OG spec requires it and scrapers do not
         # resolve relative paths. Per-language because the card carries a
         # sentence — see tool/make_og_images.py.
-        "OG_IMAGE": "%s/assets/img/og-%s.png" % (SITE, lang),
+        # An article may bring its own card (`og_image:` in its header) — an
+        # announcement of another app should not unfurl as Платіжка's card.
+        "OG_IMAGE": SITE + meta.get("og_image", "/assets/img/og-%s.png" % lang),
         "OG_IMAGE_ALT": html.escape(meta.get("og_title", meta["title"]), quote=True),
         "JSONLD": json.dumps(jsonld, ensure_ascii=False, separators=(",", ":")),
         "HOME": url_for(lang, ""),
@@ -199,6 +204,7 @@ def render(template, lang, rel, available, meta, body, jsonld,
         "PRIVACY_PAGE": LINKS.get("privacy:" + lang, CFG["privacy_url"]),
         "ANALYTICS": ANALYTICS,
         "INSTALL_URL": CFG["install_url"], "YEAR": str(date.today().year),
+        "OTHER_APPS": other_apps(lang),
     }
     for name, svg in ICONS.items():
         subs["ICON_" + name.upper()] = svg
@@ -208,6 +214,21 @@ def render(template, lang, rel, available, meta, body, jsonld,
     if left:
         raise SystemExit("unresolved placeholders: %s" % sorted(set(left)))
     return page
+
+
+def other_apps(lang):
+    """Footer line linking the publisher's other apps, or nothing.
+
+    Each link carries its own referrer tag (`utm_medium=footer`) so installs
+    from it are reported apart from the article's.
+    """
+    apps = CFG.get("other_apps", [])
+    if not apps:
+        return ""
+    links = " · ".join('<a href="%s&referrer=%s">%s</a>'
+                       % (a["install_url"], a["referrer"], html.escape(a["name"]))
+                       for a in apps)
+    return '<div class="foot__apps">%s: %s</div>' % (html.escape(UI[lang]["other_apps"]), links)
 
 
 def write(rel_path, text):
@@ -311,7 +332,7 @@ def main():
                     raise SystemExit("%s/%s: header is missing '%s'" % (lang, name, field))
             section = KIND_SECTION.get(meta.get("kind", "guide"))
             if section is None:
-                raise SystemExit("%s/%s: unknown kind %r (use guide or news)"
+                raise SystemExit("%s/%s: unknown kind %r (use guide, news or launch)"
                                  % (lang, name, meta.get("kind")))
             posts.setdefault(slug, {})[lang] = (meta, body, section)
 
@@ -500,10 +521,17 @@ def main():
             # the only way we will ever learn whether the articles produce
             # installs — an untagged link makes the whole content effort
             # unmeasurable.
-            install = "%s&referrer=%s" % (CFG["install_url"], CFG["install_referrer"])
+            #
+            # An article about ANOTHER app overrides all three (`cta_lead`,
+            # `cta_url`, `cta_referrer` in its header): ending a Terrella
+            # announcement with «Платіжка веде цю історію за вас» would send the
+            # convinced reader to the wrong app.
+            install = "%s&referrer=%s" % (meta.get("cta_url", CFG["install_url"]),
+                                          meta.get("cta_referrer", CFG["install_referrer"]))
             cta = ('<div class="shell cta"><p>%s</p>'
                    '<div class="btnrow"><a class="btn" href="%s">%s</a></div></div>'
-                   % (html.escape(t["cta_lead"]), install, html.escape(t["cta_btn"])))
+                   % (html.escape(meta.get("cta_lead", t["cta_lead"])), install,
+                      html.escape(meta.get("cta_btn", t["cta_btn"]))))
             tail = (cta
                     + '<div class="shell"><p><a class="btn btn--ghost" href="%s">%s</a></p></div>'
                     % (url_for(lang, section), t["back"] if section == "blog" else label))
@@ -528,6 +556,17 @@ def main():
                     {"@type": "ListItem", "position": 3, "name": meta["title"]},
                 ]},
             ]}
+            # An announcement says WHICH app it is about, so search engines do
+            # not read it as being about the site's own product.
+            if "app_name" in meta:
+                app = {"@type": "SoftwareApplication",
+                       "name": meta["app_name"],
+                       "applicationCategory": meta.get("app_category", "Application"),
+                       "operatingSystem": meta.get("app_os", "Android"),
+                       "installUrl": meta.get("cta_url", ""),
+                       "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+                       "author": {"@type": "Person", "name": CFG["author"]}}
+                jsonld["@graph"][0]["about"] = app
             page = render(template, lang, rel, available, meta, article, jsonld,
                           og_type="article", nav=navs[lang])
             built.append((url_for(lang, rel), write(url_for(lang, rel) + "index.html", page)))

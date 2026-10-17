@@ -35,7 +35,9 @@
       "news_title": "Новини тарифів — Платіжка",
       "news_desc": "Зміни тарифів і законодавства щодо комунальних платежів: що змінилося, з якої дати діє і на що це впливає у розрахунку.",
       "cta_lead": "Платіжка веде цю історію за вас: показання, суми й тарифи — на телефоні, без інтернету.",
-      "cta_btn": "Завантажити з Google Play"
+      "cta_btn": "Завантажити з Google Play",
+      "other_apps": "Інші застосунки Lumenware Labs",
+      "kind_launch": "Новий застосунок"
     },
     "ru": {
       "nav": "Навигация",
@@ -55,7 +57,9 @@
       "news_title": "Новости тарифов — Платіжка",
       "news_desc": "Изменения тарифов и законодательства по коммунальным платежам: что изменилось, с какой даты действует и на что влияет в расчёте.",
       "cta_lead": "Платижка ведёт эту историю за вас: показания, суммы и тарифы — на телефоне, без интернета.",
-      "cta_btn": "Скачать в Google Play"
+      "cta_btn": "Скачать в Google Play",
+      "other_apps": "Другие приложения Lumenware Labs",
+      "kind_launch": "Новое приложение"
     },
     "en": {
       "nav": "Navigation",
@@ -75,10 +79,19 @@
       "news_title": "Tariff news — Platizhka",
       "news_desc": "Changes to utility tariffs and regulation: what changed, when it takes effect, and what it means for the calculation.",
       "cta_lead": "Платіжка keeps that record for you: readings, amounts and tariffs on your phone, offline.",
-      "cta_btn": "Get it on Google Play"
+      "cta_btn": "Get it on Google Play",
+      "other_apps": "More apps from Lumenware Labs",
+      "kind_launch": "New app"
     }
   },
   "indexnow_key": "c174f65a92cee489954b676b181b035b",
   "cf_beacon_token": "82c9e878b83b43b18090f01d7a32c176",
-  "install_referrer": "utm_source%3Dplatizhka.com.ua%26utm_medium%3Dblog"
+  "install_referrer": "utm_source%3Dplatizhka.com.ua%26utm_medium%3Dblog",
+  "other_apps": [
+    {
+      "name": "Terrella",
+      "install_url": "https://play.google.com/store/apps/details?id=com.globus.globus",
+      "referrer": "utm_source%3Dplatizhka.com.ua%26utm_medium%3Dfooter%26utm_campaign%3Dterrella_launch"
+    }
+  ]
 }
