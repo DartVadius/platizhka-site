@@ -177,6 +177,29 @@ and the electricity-side "чому прийшов великий рахунок"
 has a second question worth its own piece: м³ versus кВт·год on the bill, which the
 research touched and the article does not cover.
 
+✅ **Heating chosen by the owner 2026-10-26 — `/blog/opalennia/`, all three languages,
+published 2026-10-27 after the owner proofread the uk text.** Timed for the start of the
+heating season, and the one utility the blog had not touched.
+
+- **The spine: heat in most flats is divided, not measured.** Методика розподілу (наказ
+  Мінрегіону № 315 від 22.11.2018, zakon.rada z1502-18) splits the building meter by the
+  heated area in the contract (I п.10; Правила № 830 п.24) — so the practical advice is
+  «check the area in your contract», not anything about temperature.
+- **Disconnected flats still pay for the stairwells** (Методика IV п.12; 830 п.38), and
+  **metered flats have a floor of 50 % of the building's average** (Методика VI) — the two
+  findings readers are least likely to expect.
+- **The claim procedure is quoted with its clocks** (830 п.55–58: one day to arrive, two
+  neighbours if they don't, five working days or the claim is deemed accepted).
+
+⚠ **Two details from the research agent's extraction did not survive grep against the
+primary text** — a «separate line» for transit pipes and «no data → treated as
+uninsulated». The article states only what the text says (length-based, +100 % where
+insulation is missing or damaged). The allocator-meter detail was left out unverified.
+
+⚠ **Not decided — my reading, not the owner's call.** Heating opens its own follow-ups:
+heat-cost allocators (розподілювачі) on radiators, and disconnecting from central heating
+(the procedure, not just the bill).
+
 ## English is a separate question
 
 The audience is Ukrainian — over the 28 days to 2026-08-29 Ukraine grew 1→4
