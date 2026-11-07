@@ -237,3 +237,20 @@ Then read, in this order:
 
 ⚠ Do not judge before that. Reading a two-week-old GSC report produces the
 conclusion that nothing works, because nothing has had time to.
+
+## ✅ Inverter + battery for a flat — published 2026-11-07, `/blog/invertor-akumulyator/`
+
+Owner's topic, outside the clusters above: scheduled blackouts of 13–17 h/day this autumn
+made backup power the question people are actually asking. All three languages; the uk
+text proofread by the owner.
+
+- **Prices break the «no rates» rule deliberately** (owner's call) and are dated in the
+  text («станом на листопад 2026»). Source: Hotline's per-model «from – to» across shops —
+  Rozetka sits behind a Cloudflare challenge and was not scraped. Re-check before the
+  next heating season or drop the tables.
+- Appliance draw from mass models' manufacturer data (TP-Link adapter, EU energy labels,
+  Bosch Gaz 6000 W sheet), not blog figures; runtimes are our arithmetic with a 0.85
+  allowance.
+- The grid-feedback rule is cited from NEURC resolution No. 1993 (26.11.2024); support
+  programmes (СвітлоДІМ, Kyiv's compensation) are for condominiums only — none found for
+  an individual flat, and their current intake status was not confirmed.
